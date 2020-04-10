@@ -1,27 +1,4 @@
-/* Add application styles & imports to this file! */@font-face {
-    font-family: 'Raleway_regular';
-    src: url('fonts/raleway_regular.otf');
-}
 
-@font-face {
-    font-family: 'Raleway_bold';
-    src: url('fonts/raleway_bold.otf');
-}
-
-@font-face {
-    font-family: 'Raleway_extrabold';
-    src: url('fonts/raleway_extraboldr.otf');
-}
-
-@font-face {
-    font-family: 'Raleway_light';
-    src: url('fonts/raleway_light.otf');
-}
-
-@font-face {
-    font-family: 'Raleway_semibold';
-    src: url('fonts/raleway_semibold.otf');
-}
 
 body {
 	font-family: "Raleway_regular", sans-serif;
