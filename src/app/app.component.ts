@@ -9,6 +9,6 @@ export class AppComponent  {
   name = 'Angular';
 
   display(){
-    document.getElementById("Tabla") += "Hola"
+    
   }
 }
