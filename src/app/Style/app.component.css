@@ -23,6 +23,13 @@
     src: url('fonts/raleway_semibold.otf');
 }
 
+@media screen and (max-height: 450px) {  
+  .sidenavigation {padding-top: 15px;}
+  .sidenavigation a {font-size: 18px;}
+  .drawer {padding-top: 15px;}
+  .drawer a {font-size: 18px;}
+}
+
 body {
 	font-family: "Raleway_regular", sans-serif;
 	width: 100%;
@@ -160,4 +167,66 @@ display:block;
 .clear {
     clear:both;
     line-height:0;
+}
+
+.sidenavigation {
+    height: 100%;
+    position: relative;
+    z-index: 2;
+    float: left;
+	background-image: linear-gradient(to top, #f96279, #f8a35a);
+	overflow-y: auto;
+	overflow-x: hidden;
+}
+
+.sidenavigation::-webkit-scrollbar {
+    width: 0px;
+    background: transparent; /* make scrollbar transparent */
+}
+
+.sidenavigation::-webkit-scrollbar-thumb {
+    background: #FF0000;
+}
+
+.sidenavigation_blocker_overlay {
+	width: 100px;
+	height: 100%;
+	position: absolute;
+    z-index: 1;
+    float: left;
+	top: 0;
+	left: 0;
+	transition: background-color .5s;
+}
+
+.vertical_fill_space {
+	height: 23px;
+	width: 100%;
+}
+
+.vertical_fill_space_settings {
+	height: 45px;
+	width: 100%;
+}
+
+.button_container a {
+	text-decoration: none;
+	margin: 3em;
+}
+
+.button_container a:hover {
+  
+	margin: 3em;
+	background-color: #ffffff44;
+}
+
+.button_titles {
+	text-align: center;
+	font-size: 20px;
+	font-family: "Raleway_semibold", sans-serif;
+	color: #ffffff;
+	transform: translate(0%, 70%);
+	display: inline;
+  
+  
 }

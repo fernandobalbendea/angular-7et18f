@@ -1,5 +1,20 @@
 <body>
   <div class="overlay" id="drawerIndicatorOverlay"></div>
+  <div class="sidenavigation">
+    <div class="vertical_fill_space"></div>
+    <div class="button_container" id="view_alerts">
+      <a href="alertmap">
+        <div class="button_titles">Dashboard
+        </div>
+      </a>
+    </div>
+    <div class="button_container" id="information">
+      <a href="information">
+        <div class="button_titles">Información
+        </div>
+      </a>
+    </div>
+  </div>
   <div class = "central_container">
     <div class = "reports_central_container">
       <br class="clear">
@@ -9,8 +24,9 @@
           <td>
             <div class = "reports_small_card">
               <div class = "centre_inline center_new">
+                <div class="medium_bold_font_center_inline">ST40</div>
                 <div class="huge_font_center_inline" id="alert_total_count">30</div>
-                <div class="medium_bold_font_center_inline">OUTSIDE</div>
+                
                 <div class="subtipos_alertas" id="subtipos_alertas">
                   <button (click) = "display()">Structural = 10</button>
                   <button (click) = "display()">Mechanical = 15</button>
@@ -23,8 +39,9 @@
           <td>
             <div class = "reports_small_card">
               <div class = "centre_inline center_new">
+                 <div class="medium_bold_font_center_inline">CAGE</div>
                 <div class="huge_font_center_inline" id="alert_total_count">30</div>
-                <div class="medium_bold_font_center_inline">CAGE</div>
+               
                 <div class="subtipos_alertas" id="subtipos_alertas">
                    <button class = "subestado_stat" (click) = "display()">Structural = 12</button>
                   <button class = "subestado_stat" (click) = "display()">Mechanical = 12</button>
