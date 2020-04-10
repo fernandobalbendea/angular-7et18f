@@ -1,27 +1,42 @@
-<div class="overlay" id="drawerIndicatorOverlay"></div>
-<div class = "central_container">
-  <div class = "reports_central_container">
-    <br class="clear">
-    <br class="clear">
-    <div class = "reports_small_card">
-      <div class = "centre_inline center_new">
-        <div class="huge_font_center_inline" id="alert_total_count">30</div>
-        <div class="medium_bold_font_center_inline">OUTSIDE</div>
-        <div class="subtipos_alertas" id="subtipos_alertas">
-        <p class="subestado_stat">Structural: 10</p>
-        <p class="subestado_stat">Mechanic: 10</p>
-        <p class="subestado_stat">Electric: 10</p> 
-      </div>
-    </div>
-    <div class = "reports_small_card">
-      <div class = "centre_inline center_new">
-        <div class="huge_font_center_inline" id="alert_total_count">30</div>
-        <div class="medium_bold_font_center_inline">CAGE</div>
-        <div class="subtipos_alertas" id="subtipos_alertas">
-        <p class="subestado_stat">Structural: 10</p>
-        <p class="subestado_stat">Mechanic: 10</p>
-        <p class="subestado_stat">Electric: 10</p> 
-      </div>
+<body>
+  <div class="overlay" id="drawerIndicatorOverlay"></div>
+  <div class = "central_container">
+    <div class = "reports_central_container">
+      <br class="clear">
+      <br class="clear">
+      <table>
+        <tr>
+          <td>
+            <div class = "reports_small_card">
+              <div class = "centre_inline center_new">
+                <div class="huge_font_center_inline" id="alert_total_count">30</div>
+                <div class="medium_bold_font_center_inline">OUTSIDE</div>
+                <div class="subtipos_alertas" id="subtipos_alertas">
+                  <button class = "subestado_stat" (click) = "display()">Structural = 10</button>
+                  <button class = "subestado_stat" (click) = "display()">Mechanical = 15</button>
+                  <button class = "subestado_stat" (click) = "display()">Electrical = 5</button>
+                  
+                </div>
+              </div>
+            </div>
+          </td>
+          <td>
+            <div class = "reports_small_card">
+              <div class = "centre_inline center_new">
+                <div class="huge_font_center_inline" id="alert_total_count">30</div>
+                <div class="medium_bold_font_center_inline">CAGE</div>
+                <div class="subtipos_alertas" id="subtipos_alertas">
+                  <p class="subestado_stat">Structural: 10</p>
+                  <p class="subestado_stat">Mechanic: 10</p>
+                  <p class="subestado_stat">Electric: 10</p> 
+                </div>
+              </div>
+            </div>
+          </td>
+        </tr>
+      </table>
+      
+      
     </div>
   </div>
-</div>
+</body>
