@@ -27,9 +27,9 @@
                 <div class="medium_bold_font_center_inline">ST40</div>
                 <div class="huge_font_center_inline" id="alert_total_count_st40"></div>
                 <div class="subtipos_alertas" id="subtipos_alertas">
-                  <button (click) = "display()" id = "st40_struct"></button>
-                  <button (click) = "display()" id = "st40_mec"></button>
-                  <button (click) = "display()" id = "st40_elec"></button>
+                  <button (click) = "display('Structural', 'st40')" id = "st40_struct"></button>
+                  <button (click) = "display('Mechanical', 'st40')" id = "st40_mec"></button>
+                  <button (click) = "display('Electrical', 'st40')" id = "st40_elec"></button>
                 </div>
               </div>
             </div>
@@ -40,13 +40,14 @@
                  <div class="medium_bold_font_center_inline">CAGE</div>
                 <div class="huge_font_center_inline" id="alert_total_count_cage"></div>
                 <div class="subtipos_alertas" id="subtipos_alertas">
-                   <button class = "subestado_stat" (click) = "display()" id = "cage_struct"></button>
-                  <button class = "subestado_stat" (click) = "display()" id = "cage_mec"></button>
-                  <button class = "subestado_stat" (click) = "display()" id = "cage_elec"></button>
+                   <button class = "subestado_stat" (click) = "display('Structural', 'cage')" id = "cage_struct"></button>
+                  <button class = "subestado_stat" (click) = "display('Mechanical', 'cage')" id = "cage_mec"></button>
+                  <button class = "subestado_stat" (click) = "display('Electrical', 'cage')" id = "cage_elec"></button>
                 </div>
               </div>
             </div>
             <div id = "Tabla">
+              <table><tr><th>Toolcase</th><th>ID Worker</th><th>Problem</th><th>Status</th><th>Battery</th></tr></table>
             </div>
           </td>
         </tr>
