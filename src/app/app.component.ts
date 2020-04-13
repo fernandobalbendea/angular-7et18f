@@ -22,13 +22,13 @@ parse(text){
 
     document.getElementById("alert_total_count_st40").innerHTML = json[1].mechanical_cases.number + json[1].electrical_cases.number + json[1].structural_cases.number
 
-    document.getElementById("st40_struct").innerHTML = json[1].structural_cases.number
-    document.getElementById("st40_mec").innerHTML = json[1].mechanical_cases.number
-    document.getElementById("st40_elec").innerHTML = json[1].electrical_cases.number
+    document.getElementById("st40_struct").innerHTML = 'Structural = ' + json[1].structural_cases.number
+    document.getElementById("st40_mec").innerHTML = 'Mechanical = ' + json[1].mechanical_cases.number
+    document.getElementById("st40_elec").innerHTML = 'Electrical = ' +  json[1].electrical_cases.number
 
-    document.getElementById("cage_struct").innerHTML = json[0].structural_cases.number
-    document.getElementById("cage_mec").innerHTML = json[0].mechanical_cases.number
-    document.getElementById("cage_elec").innerHTML = json[0].electrical_cases.number
+    document.getElementById("cage_struct").innerHTML = 'Structural = ' + json[0].structural_cases.number
+    document.getElementById("cage_mec").innerHTML = 'Mechanical = ' + json[0].mechanical_cases.number
+    document.getElementById("cage_elec").innerHTML = 'Electrical = ' +  json[0].electrical_cases.number
 
 }
 
@@ -66,9 +66,7 @@ parse(text){
 '}'+
 ']'
 
-this.parse(text)
-  }
-/*
+
 var Url = "http://192.168.221.130:8081/get_dizmo_data?location=Operating&type=ME";
       
       (function ($) {
@@ -85,35 +83,35 @@ var Url = "http://192.168.221.130:8081/get_dizmo_data?location=Operating&type=ME
     })(jQuery);
 
 
-var socket = new WebSocket("ws://192.168.221.130:8080/jsr356toUpper");
-        
-socket.onopen = function(e) {
-  socket.send("Dizmo");
- };
-        
-socket.onmessage = function(e){
-  var json = JSON.parse(e.data)
+  var socket = new WebSocket("ws://192.168.221.130:8080/jsr356toUpper");
+          
+  socket.onopen = function(e) {
+    socket.send("Dizmo");
+  };
+          
+    socket.onmessage = function(e){
+      var json = JSON.parse(e.data)
 
 
 
-  document.getElementById("alert_total_count_cage").innerHTML = json[0].mechanical_cases.number + json[0].electrical_cases.number + json[0].structural_cases.number
+      document.getElementById("alert_total_count_cage").innerHTML = json[0].mechanical_cases.number + json[0].electrical_cases.number + json[0].structural_cases.number
 
-  document.getElementById("alert_total_count_st40").innerHTML = json[1].mechanical_cases.number + json[1].electrical_cases.number + json[1].structural_cases.number
+      document.getElementById("alert_total_count_st40").innerHTML = json[1].mechanical_cases.number + json[1].electrical_cases.number + json[1].structural_cases.number
 
-  document.getElementById("st40_struct").innerHTML = json[1].structural_cases.number
-  document.getElementById("st40_mec").innerHTML = json[1].mechanical_cases.number
-  document.getElementById("st40_elec").innerHTML = json[1].electrical_cases.number
+      document.getElementById("st40_struct").innerHTML = json[1].structural_cases.number
+      document.getElementById("st40_mec").innerHTML = json[1].mechanical_cases.number
+      document.getElementById("st40_elec").innerHTML = json[1].electrical_cases.number
 
-  document.getElementById("cage_struct").innerHTML = json[0].structural_cases.number
-  document.getElementById("cage_mec").innerHTML = json[0].mechanical_cases.number
-  document.getElementById("cage_elec").innerHTML = json[0].electrical_cases.number
+      document.getElementById("cage_struct").innerHTML = json[0].structural_cases.number
+      document.getElementById("cage_mec").innerHTML = json[0].mechanical_cases.number
+      document.getElementById("cage_elec").innerHTML = json[0].electrical_cases.number
 
- 
-}
-
- 
+    
+    }
 
   }
+
+  
 
 
 
@@ -124,6 +122,6 @@ socket.onmessage = function(e){
 
   display(){
     
-}
-*/
+  }
+
 }
