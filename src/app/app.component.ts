@@ -42,8 +42,21 @@ export class AppComponent  {
 '"alerted":"no"'+
 '}'+
 '}'+
-']"'
+']'
 var json = JSON.parse(text)
+
+document.getElementById("alert_total_count_cage").innerHTML += json[0].mechanical_cases.number + json[0].electrical_cases.number + json[0].structural_cases.number
+
+document.getElementById("alert_total_count_st40").innerHTML += json[1].mechanical_cases.number + json[1].electrical_cases.number + json[1].structural_cases.number
+
+document.getElementById("st40_struct").innerHTML += json[1].structural_cases.number
+document.getElementById("st40_mec").innerHTML += json[1].mechanical_cases.number
+document.getElementById("st40_elec").innerHTML += json[1].electrical_cases.number
+
+document.getElementById("cage_struct").innerHTML += json[0].structural_cases.number
+document.getElementById("cage_mec").innerHTML += json[0].mechanical_cases.number
+document.getElementById("cage_elec").innerHTML += json[0].electrical_cases.number
+
 
 
   }
