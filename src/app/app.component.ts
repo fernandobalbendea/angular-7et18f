@@ -106,9 +106,8 @@ var json = JSON.parse(text)
       
 this.parser(text)
 
-document.getElementById("alert_total_count_st40").innerHTML += json[0].hasOwnProperty("mechanical_cases") 
 
- document.getElementById("alert_total_count_cage").innerHTML = (parseInt(document.getElementById("cage_struct").innerHTML.toString().split(" ")[2]) + parseInt(document.getElementById("cage_elec").innerHTML.toString().split(" ")[2]) + parseInt(document.getElementById("cage_mec").innerHTML.toString().split(" ")[2])).toString()
+ 
   
 
 var Url = "http://192.168.221.130:8081/get_dizmo_data?location=Operating&type=ME";
