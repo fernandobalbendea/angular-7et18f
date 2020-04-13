@@ -100,14 +100,42 @@ parser(text1){
 '}'+
 ']'
 
-
 var json = JSON.parse(text)
-
-      
 this.parser(text)
 
 
- 
+ var text2 = '[' + 
+'{' + 
+'"case_serial_number":"me125",'+
+'"case_RFID_tag":"TC125",'+
+'"worker_id":"81234",'+
+'"notification_type":"warning",'+
+'"tool_check":"OK",'+
+'"event":"LOW_BATTERY",'+
+'"case_status":"open",'+
+'"battery_level":100'+
+'},'+
+'{'+
+'"case_serial_number":"me042",'+
+'"case_RFID_tag":"TC042",'+
+'"worker_id":"81392",'+
+'"notification_type":"alert",'+
+'"tool_check":"Fault",'+
+'"event":"CLOSE",'+
+'"case_status":"close",'+
+'"battery_level":90'+
+'}'+
+']'
+
+var table = "<table style='width:100%' border = 1px><tr><th>Toolcase</th><th>ID Worker</th><th>Problem</th><th>Status</th><th>Battery</th></tr>"
+var json2 = JSON.parse(text2)
+var i
+
+for (i = 0; i<json2.length; i++){
+  table += "<tr><td>" + json2[i].case_serial_number + "</td><td>" + json2[i].worker_id + "</td><td>" + json2[i].event + "</td><td>" + json2[i].case_status + "</td><td>" + json2[i].battery_level + "</td></tr>"
+}
+table += "</table>"
+document.getElementById("Tabla").innerHTML = table
   
 
 var Url = "http://192.168.221.130:8081/get_dizmo_data?location=Operating&type=ME";
@@ -234,8 +262,11 @@ var Url = "http://192.168.221.130:8081/get_dizmo_data?location=Operating&type=ME
       socket.onmessage = function(e){
         var json = JSON.parse(e.data)
 
+        var text2 = 
+
         document.getElementById("Tabla").innerHTML = "<table><tr><th>Toolcase</th><th>ID Worker</th><th>Problem</th><th>Status</th><th>Battery</th>"
         //Recorro el JSON para añadir filas (td)
+
 
 
       
