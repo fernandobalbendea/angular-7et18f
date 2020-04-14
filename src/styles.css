@@ -16,6 +16,19 @@ p {
     margin-inline-end: 0px;
 }
 
+.button, button {
+  display: inline-flex;
+  align-items: center;
+  padding: 0px 0px;
+  border-radius: 2px;
+  font-size: 14px;
+  margin : 5px;
+  cursor: pointer;
+  background-color: #ffffff;
+  color: black;
+  border: none;
+}
+
 
 .overlay {
 	width: 100%;
@@ -126,34 +139,21 @@ display:block;
     line-height:0;
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 .information_container {
-    overflow: hidden;
-    overflow-y: scroll;
-    height: 100%;
+    overflow:auto;
+    height: 185px;
+    width: 432px;
     padding-left: 10px;
     padding-right: 50px;
     padding-bottom: 20px;
     display: block;
 }
+
+.information_container::-webkit-scrollbar {
+  display: none;
+}
+
+
 
 .Tabla1 {
     position: relative;
@@ -168,16 +168,16 @@ display:block;
 }
 
 .info_card_long {
-    padding-left: 20px;
-    padding-right: 50px;
+    padding-left: 10px;
+    padding-right: 30px;
     margin-bottom: 10px;
-    margin-left: 5px;
+    margin-left: 0px;
     font-family: "Raleway_semibold", sans-serif;
     text-align : center;
     font-size: 12px;
     letter-spacing: 0.2px;
     color: #000;
-    width: 400px;
+    width: 430px;
     height: 50px;
     border-radius: 5px;
     background-color: #ffffff;
@@ -189,12 +189,12 @@ display:block;
     vertical-align: middle;
     display: flex;
     align-items: center;
-    font-size: 16px;
+    font-size: 15px;
     margin-bottom: 5px;
 }
 
 .info_card_long.cabecera .info_card_toolcase {
-    width: 100px !important;
+    width: 200px !important;
 }
 
 .row_plantilla .info_card_table {
@@ -202,8 +202,9 @@ display:block;
 }
 
 .cabecera .info_card_table.worker {
-    width: 100px !important;
+    width: 150px !important;
 }
+
 
 .info_card_long.cabecera-listado .info_card_table.problem {
     width: 200px;

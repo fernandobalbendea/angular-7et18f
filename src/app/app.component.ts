@@ -1,290 +1,417 @@
-import { Component,  OnInit } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { Component, OnInit } from "@angular/core";
+import { HttpClient } from "@angular/common/http";
 declare var jQuery: any;
 
-
 @Component({
-  selector: 'my-app',
-  templateUrl: './app.component.html',
-  styleUrls: [ './Style/app.component.css' ]
+  selector: "my-app",
+  templateUrl: "./app.component.html",
+  styleUrls: ["./Style/app.component.css"]
 })
+export class AppComponent {
+  parser(text1) {
+    var json = JSON.parse(text1);
 
+    document.getElementById("alert_total_count_cage").innerHTML =
+      json[0].mechanical_cases.number +
+      json[0].electrical_cases.number +
+      json[0].structural_cases.number;
 
+    document.getElementById("alert_total_count_st40").innerHTML =
+      json[1].mechanical_cases.number +
+      json[1].electrical_cases.number +
+      json[1].structural_cases.number;
 
-export class AppComponent  {
+    document.getElementById("st40_struct").innerHTML =
+      "Structural = " + json[1].structural_cases.number;
 
-parser(text1){
-     var json = JSON.parse(text1)
-
-
-
-    document.getElementById("alert_total_count_cage").innerHTML = json[0].mechanical_cases.number + json[0].electrical_cases.number + json[0].structural_cases.number
-
-
-    document.getElementById("alert_total_count_st40").innerHTML = json[1].mechanical_cases.number + json[1].electrical_cases.number + json[1].structural_cases.number
-
-    document.getElementById("st40_struct").innerHTML = 'Structural = ' + json[1].structural_cases.number
-
-    if(json[1].structural_cases.alerted == 'yes'){
-      document.getElementById("st40_struct").style.color = 'red'
+    if (json[1].structural_cases.alerted == "yes") {
+      document.getElementById("st40_struct").style.color = "red";
     }
 
-    document.getElementById("st40_mec").innerHTML = 'Mechanical = ' + json[1].mechanical_cases.number
+    document.getElementById("st40_mec").innerHTML =
+      "Mechanical = " + json[1].mechanical_cases.number;
 
-    if(json[1].mechanical_cases.alerted == 'yes'){
-      document.getElementById("st40_mec").style.color = 'red'
+    if (json[1].mechanical_cases.alerted == "yes") {
+      document.getElementById("st40_mec").style.color = "red";
     }
 
-    document.getElementById("st40_elec").innerHTML = 'Electrical = ' +  json[1].electrical_cases.number
+    document.getElementById("st40_elec").innerHTML =
+      "Electrical = " + json[1].electrical_cases.number;
 
-    if(json[1].electrical_cases.alerted == 'yes'){
-      document.getElementById("st40_elec").style.color = 'red'
+    if (json[1].electrical_cases.alerted == "yes") {
+      document.getElementById("st40_elec").style.color = "red";
     }
 
-    document.getElementById("cage_struct").innerHTML = 'Structural = ' + json[0].structural_cases.number
+    document.getElementById("cage_struct").innerHTML =
+      "Structural = " + json[0].structural_cases.number;
 
-    if(json[0].structural_cases.alerted == 'yes'){
-      document.getElementById("cage_struct").style.color = 'red'
+    if (json[0].structural_cases.alerted == "yes") {
+      document.getElementById("cage_struct").style.color = "red";
     }
 
-    document.getElementById("cage_mec").innerHTML = 'Mechanical = ' + json[0].mechanical_cases.number
+    document.getElementById("cage_mec").innerHTML =
+      "Mechanical = " + json[0].mechanical_cases.number;
 
-    if(json[0].mechanical_cases.alerted == 'yes'){
-      document.getElementById("cage_mec").style.color = 'red'
+    if (json[0].mechanical_cases.alerted == "yes") {
+      document.getElementById("cage_mec").style.color = "red";
     }
 
-    document.getElementById("cage_elec").innerHTML = 'Electrical = ' +  json[0].electrical_cases.number
+    document.getElementById("cage_elec").innerHTML =
+      "Electrical = " + json[0].electrical_cases.number;
 
-    if(json[0].electrical_cases.alerted == 'yes'){
-      document.getElementById("cage_elec").style.color = 'red'
+    if (json[0].electrical_cases.alerted == "yes") {
+      document.getElementById("cage_elec").style.color = "red";
     }
-
-
-
-
-    
-
-}
-
-  ngOnInit(){
-    var text = '['+
-'{'+
-'"location":"cage01",'+
-'"mechanical_cases":{'+
-'"number":10,'+
-'"alerted":"yes"'+
-'},'+
-'"electrical_cases":{'+
-'"number":10,'+
-'"alerted":"yes"'+
-'},'+
-'"structural_cases":{'+
-'"number":10,'+
-'"alerted":"yes"'+
-'}'+
-'},'+
-'{'+
-'"location":"st40",'+
-'"mechanical_cases":{'+
-'"number":2,'+
-'"alerted":"yes"'+
-'},'+
-'"electrical_cases":{'+
-'"number":3,'+
-'"alerted":"yes"'+
-'},'+
-'"structural_cases":{'+
-'"number":4,'+
-'"alerted":"no"'+
-'}'+
-'}'+
-']'
-
-var json = JSON.parse(text)
-this.parser(text)
-
-
- var text2 = '[' + 
-'{' + 
-'"case_serial_number":"me125",'+
-'"case_RFID_tag":"TC125",'+
-'"worker_id":"81234",'+
-'"notification_type":"warning",'+
-'"tool_check":"OK",'+
-'"event":"LOW_BATTERY",'+
-'"case_status":"open",'+
-'"battery_level":100'+
-'},'+
-'{'+
-'"case_serial_number":"me042",'+
-'"case_RFID_tag":"TC042",'+
-'"worker_id":"81392",'+
-'"notification_type":"alert",'+
-'"tool_check":"Fault",'+
-'"event":"CLOSE",'+
-'"case_status":"close",'+
-'"battery_level":90'+
-'}'+
-']'
-
-var table = "<div class = 'information_container'><div class = 'info_card_list_container'><div class='info_card_long cabecera-listado cabecera'> <table class='info_car_long_content row_plantilla'><tbody><tr><td class='info_card_toolcase'>Toolcase</td><td class='info_card_table worker'>ID Worker</td><td class='info_card_island problem'>Problem</td><td class='info_card_island status'>Status</td><td class='info_card_table battery'>Battery</td></tr></tbody><tbody></tbody></table></div>"
-
-var json2 = JSON.parse(text2)
-var i
-
-for (i = 0; i<json2.length; i++){
-  if(json2[i].event != "OPEN" && (json2[i].event == "LOW_BATTERY" || json2[i].case_status == "close")){
-     table += "<div class = 'info_card_long'><table width = '100%' height = '100%' "
-    if(json2[i].notification_type == "alert")
-      table += " style='color : red'"
-    else if (json2[i].notification_type == "warning")
-      table += " style='color : orange'"
-    table += "><tbody><tr><td class='info_card_toolcase' width='100px'>"
-    table += json2[i].case_serial_number + "</td><td width='100px'>" + json2[i].worker_id + "</td><td width='100px'>"
-    if(json2[i].event != "LOW_BATTERY")
-      table += json2[i].tool_check
-    else table += json2[i].event
-    
-    
-    table += "</td><td width='100px'>" + json2[i].case_status + "</td><td width='100px'>" + json2[i].battery_level + "</td></tr></tbody></table></div>"
-  }
-}
-table += "</div></div>"
-document.getElementById("Tabla").innerHTML = table
-  
-
-var Url = "http://192.168.221.130:8081/get_dizmo_data?location=Operating&type=ME";
-      
-      (function ($) {
-      $.ajax({
-            url: Url,
-            type:"GET",
-            success: function(result){
-                this.parser(result)
-            },
-            error: function(error){
-                //document.getElementById('ME').innerHTML = error;
-                //Hay que ver qué hacemos cuando haya un error
-            }
-        })
-    })(jQuery);
-
-
-  var socket = new WebSocket("ws://192.168.221.130:8080/jsr356toUpper");
-          
-  socket.onopen = function(e) {
-    socket.send("Dizmo");
-  };
-          
-    socket.onmessage = function(e){
-      var json = JSON.parse(e.data)
-
-      
-      if(json[0].location == "cage01"){
-        var a = 0
-        var b = 1
-      }else{
-        var a = 1
-        var b = 0
-      }
-      var c = "cage"
-      var d = "st40"
-
-      if(json[a].hasOwnProperty("mechanical_cases")){
-        document.getElementById(c + "_mec").innerHTML = "Mechanical = " + json[a].mechanical_cases.number
-        if(json[a].mechanical_cases.alerted == 'yes')
-          document.getElementById(c + "_mec").style.color = 'red'
-        else if(json[a].mechanical_cases.alerted == 'no')
-          document.getElementById(c + "_mec").style.color = 'white'
-      }
-      if(json[a].hasOwnProperty("structural_cases")){
-        document.getElementById(c + "_struct").innerHTML = "Structural = " + json[a].structural_cases.number
-        if(json[a].structural_cases.alerted == 'yes')
-          document.getElementById(c + "_struct").style.color = 'red'
-        else
-          document.getElementById(c + "_struct").style.color = 'white'
-      }
-      if(json[a].hasOwnProperty("electrical_cases")){
-        document.getElementById(c + "_elec").innerHTML = "Electrical = " + json[a].structural_cases.number
-        if(json[a].electrical_cases.alerted == 'yes')
-          document.getElementById(c + "_elec").style.color = 'red'
-        else
-          document.getElementById(c + "_elec").style.color = 'white'
-      }
-
-      if(json[b].hasOwnProperty("mechanical_cases")){          
-        document.getElementById(d + "_mec").innerHTML = "Mechanical = " + json[b].mechanical_cases.number
-        if(json[b].mechanical_cases.alerted == 'yes')
-          document.getElementById(d + "_mec").style.color = 'red'
-        else
-          document.getElementById(d + "_mec").style.color = 'white'
-      }
-      if(json[b].hasOwnProperty("structural_cases")){
-        document.getElementById(d + "_struct").innerHTML = "Structural = " + json[b].structural_cases.number
-         if(json[b].structural_cases.alerted == 'yes')
-          document.getElementById(d + "_struct").style.color = 'red'
-        else
-          document.getElementById(d + "_struct").style.color = 'white'
-      }
-      if(json[b].hasOwnProperty("electrical_cases")){
-        document.getElementById(d + "_elec").innerHTML = "Electrical = " + json[b].structural_cases.number
-        if(json[b].electrical_cases.alerted == 'yes')
-          document.getElementById(d + "_elec").style.color = 'red'
-        else
-          document.getElementById(d + "_elec").style.color = 'white'
-      }
-
-      document.getElementById("alert_total_count_cage").innerHTML = (parseInt(document.getElementById("cage_struct").innerHTML.toString().split(" ")[2]) + parseInt(document.getElementById("cage_elec").innerHTML.toString().split(" ")[2]) + parseInt(document.getElementById("cage_mec").innerHTML.toString().split(" ")[2])).toString()
-
-      document.getElementById("alert_total_count_st40").innerHTML = (parseInt(document.getElementById("st40_struct").innerHTML.toString().split(" ")[2]) + parseInt(document.getElementById("st40_elec").innerHTML.toString().split(" ")[2]) + parseInt(document.getElementById("st40_mec").innerHTML.toString().split(" ")[2])).toString()
-    }
-
   }
 
-  
+  ngOnInit() {
+    var text =
+      "[" +
+      "{" +
+      '"location":"cage01",' +
+      '"mechanical_cases":{' +
+      '"number":10,' +
+      '"alerted":"yes"' +
+      "}," +
+      '"electrical_cases":{' +
+      '"number":10,' +
+      '"alerted":"yes"' +
+      "}," +
+      '"structural_cases":{' +
+      '"number":10,' +
+      '"alerted":"yes"' +
+      "}" +
+      "}," +
+      "{" +
+      '"location":"st40",' +
+      '"mechanical_cases":{' +
+      '"number":2,' +
+      '"alerted":"yes"' +
+      "}," +
+      '"electrical_cases":{' +
+      '"number":3,' +
+      '"alerted":"yes"' +
+      "}," +
+      '"structural_cases":{' +
+      '"number":4,' +
+      '"alerted":"no"' +
+      "}" +
+      "}" +
+      "]";
 
+    var json = JSON.parse(text);
+    this.parser(text);
 
+    var text2 =
+      "[" +
+      "{" +
+      '"case_serial_number":"me125",' +
+      '"case_RFID_tag":"TC125",' +
+      '"worker_id":"81234",' +
+      '"notification_type":"warning",' +
+      '"tool_check":"OK",' +
+      '"event":"LOW_BATTERY",' +
+      '"case_status":"open",' +
+      '"battery_level":100' +
+      "}," +
+      "{" +
+      '"case_serial_number":"me042",' +
+      '"case_RFID_tag":"TC042",' +
+      '"worker_id":"81392",' +
+      '"notification_type":"alert",' +
+      '"tool_check":"Fault",' +
+      '"event":"CLOSE",' +
+      '"case_status":"close",' +
+      '"battery_level":90' +
+      "}," +
+      "{" +
+      '"case_serial_number":"me042",' +
+      '"case_RFID_tag":"TC042",' +
+      '"worker_id":"81392",' +
+      '"notification_type":"alert",' +
+      '"tool_check":"Fault",' +
+      '"event":"CLOSE",' +
+      '"case_status":"close",' +
+      '"battery_level":90' +
+      "}," +
+      "{" +
+      '"case_serial_number":"me042",' +
+      '"case_RFID_tag":"TC042",' +
+      '"worker_id":"81392",' +
+      '"notification_type":"alert",' +
+      '"tool_check":"Fault",' +
+      '"event":"CLOSE",' +
+      '"case_status":"close",' +
+      '"battery_level":90' +
+      "}," +
+      "{" +
+      '"case_serial_number":"me042",' +
+      '"case_RFID_tag":"TC042",' +
+      '"worker_id":"81392",' +
+      '"notification_type":"alert",' +
+      '"tool_check":"Fault",' +
+      '"event":"CLOSE",' +
+      '"case_status":"close",' +
+      '"battery_level":90' +
+      "}," +
+      "{" +
+      '"case_serial_number":"me042",' +
+      '"case_RFID_tag":"TC042",' +
+      '"worker_id":"81392",' +
+      '"notification_type":"alert",' +
+      '"tool_check":"Fault",' +
+      '"event":"CLOSE",' +
+      '"case_status":"close",' +
+      '"battery_level":90' +
+      "}," +
+      "{" +
+      '"case_serial_number":"me042",' +
+      '"case_RFID_tag":"TC042",' +
+      '"worker_id":"81392",' +
+      '"notification_type":"alert",' +
+      '"tool_check":"Fault",' +
+      '"event":"CLOSE",' +
+      '"case_status":"close",' +
+      '"battery_level":90' +
+      "}," +
+      "{" +
+      '"case_serial_number":"me042",' +
+      '"case_RFID_tag":"TC042",' +
+      '"worker_id":"81392",' +
+      '"notification_type":"alert",' +
+      '"tool_check":"Fault",' +
+      '"event":"CLOSE",' +
+      '"case_status":"close",' +
+      '"battery_level":90' +
+      "}," +
+      "{" +
+      '"case_serial_number":"me042",' +
+      '"case_RFID_tag":"TC042",' +
+      '"worker_id":"81392",' +
+      '"notification_type":"alert",' +
+      '"tool_check":"Fault",' +
+      '"event":"CLOSE",' +
+      '"case_status":"close",' +
+      '"battery_level":90' +
+      "}" +
+      "]";
+/*
+    var json2 = JSON.parse(text2);
+    var table =
+      "<div class = 'information_container'><div class = 'info_card_list_container'><div class='info_card_long cabecera-listado cabecera'> <table class='info_car_long_content row_plantilla'><tbody><tr><td class='info_card_toolcase'><b>Toolcase</b></td><td class='info_card_table worker'>ID Worker</td><td class='info_card_table problem'>Problem</td><td class='info_card_table status'>Status</td><td class='info_card_table battery'>Battery</td></tr></tbody><tbody></tbody></table></div>";
 
+    var i;
 
-  
+    for (i = 0; i < json2.length; i++) {
+      if (
+        json2[i].event != "OPEN" &&
+        (json2[i].event == "LOW_BATTERY" || json2[i].case_status == "close")
+      ) {
+        table +=
+          "<div class = 'info_card_long cabecera-listado'><button><table";
+        if (json2[i].notification_type == "alert")
+          table += " style='color : red'";
+        else if (json2[i].notification_type == "warning")
+          table += " style='color : orange'";
+        table += "><tbody><tr><td class='info_card_toolcase' width='100px'>";
+        table +=
+          json2[i].case_serial_number +
+          "</td><td width='100px'>" +
+          json2[i].worker_id +
+          "</td><td width='100px'>";
+        if (json2[i].event != "LOW_BATTERY") table += json2[i].tool_check;
+        else table += "Low Battery";
 
+        table +=
+          "</td><td width='100px'>" +
+          json2[i].case_status +
+          "</td><td width='100px'>" +
+          json2[i].battery_level +
+          "</td></tr></tbody></table></button></div>";
+      }
+    }
+    table += "</div></div>";
+    document.getElementById("Tabla").innerHTML = table;
+*/
+    var Url =
+      "http://192.168.221.130:8081/get_dizmo_data?location=Operating&type=ME";
 
-
-  display(zone, toolbox){
-    var Url = "http://192.168.221.130:8081/get_dizmo_data?location=Operating&type=ME";
-      
-      (function ($) {
+    (function($) {
       $.ajax({
-            url: Url,
-            type:"GET",
-            success: function(result){
-                this.parser(result)
-            },
-            error: function(error){
-                //document.getElementById('ME').innerHTML = error;
-                //Hay que ver qué hacemos cuando haya un error
-            }
-        })
+        url: Url,
+        type: "GET",
+        success: function(result) {
+          this.parser(result);
+        },
+        error: function(error) {
+          //document.getElementById('ME').innerHTML = error;
+          //Hay que ver qué hacemos cuando haya un error
+        }
+      });
     })(jQuery);
-
 
     var socket = new WebSocket("ws://192.168.221.130:8080/jsr356toUpper");
-            
+
     socket.onopen = function(e) {
       socket.send("Dizmo");
     };
-            
-      socket.onmessage = function(e){
-        var json = JSON.parse(e.data)
 
-        var text2 = 
+    socket.onmessage = function(e) {
+      var json = JSON.parse(e.data);
 
-        document.getElementById("Tabla").innerHTML = "<table><tr><th>Toolcase</th><th>ID Worker</th><th>Problem</th><th>Status</th><th>Battery</th>"
-        //Recorro el JSON para añadir filas (td)
+      if (json[0].location == "cage01") {
+        var a = 0;
+        var b = 1;
+      } else {
+        var a = 1;
+        var b = 0;
+      }
+      var c = "cage";
+      var d = "st40";
 
+      if (json[a].hasOwnProperty("mechanical_cases")) {
+        document.getElementById(c + "_mec").innerHTML =
+          "Mechanical = " + json[a].mechanical_cases.number;
+        if (json[a].mechanical_cases.alerted == "yes")
+          document.getElementById(c + "_mec").style.color = "red";
+        else if (json[a].mechanical_cases.alerted == "no")
+          document.getElementById(c + "_mec").style.color = "white";
+      }
+      if (json[a].hasOwnProperty("structural_cases")) {
+        document.getElementById(c + "_struct").innerHTML =
+          "Structural = " + json[a].structural_cases.number;
+        if (json[a].structural_cases.alerted == "yes")
+          document.getElementById(c + "_struct").style.color = "red";
+        else document.getElementById(c + "_struct").style.color = "white";
+      }
+      if (json[a].hasOwnProperty("electrical_cases")) {
+        document.getElementById(c + "_elec").innerHTML =
+          "Electrical = " + json[a].structural_cases.number;
+        if (json[a].electrical_cases.alerted == "yes")
+          document.getElementById(c + "_elec").style.color = "red";
+        else document.getElementById(c + "_elec").style.color = "white";
+      }
 
+      if (json[b].hasOwnProperty("mechanical_cases")) {
+        document.getElementById(d + "_mec").innerHTML =
+          "Mechanical = " + json[b].mechanical_cases.number;
+        if (json[b].mechanical_cases.alerted == "yes")
+          document.getElementById(d + "_mec").style.color = "red";
+        else document.getElementById(d + "_mec").style.color = "white";
+      }
+      if (json[b].hasOwnProperty("structural_cases")) {
+        document.getElementById(d + "_struct").innerHTML =
+          "Structural = " + json[b].structural_cases.number;
+        if (json[b].structural_cases.alerted == "yes")
+          document.getElementById(d + "_struct").style.color = "red";
+        else document.getElementById(d + "_struct").style.color = "white";
+      }
+      if (json[b].hasOwnProperty("electrical_cases")) {
+        document.getElementById(d + "_elec").innerHTML =
+          "Electrical = " + json[b].structural_cases.number;
+        if (json[b].electrical_cases.alerted == "yes")
+          document.getElementById(d + "_elec").style.color = "red";
+        else document.getElementById(d + "_elec").style.color = "white";
+      }
 
-      
-    }
+      document.getElementById("alert_total_count_cage").innerHTML = (
+        parseInt(
+          document
+            .getElementById("cage_struct")
+            .innerHTML.toString()
+            .split(" ")[2]
+        ) +
+        parseInt(
+          document
+            .getElementById("cage_elec")
+            .innerHTML.toString()
+            .split(" ")[2]
+        ) +
+        parseInt(
+          document
+            .getElementById("cage_mec")
+            .innerHTML.toString()
+            .split(" ")[2]
+        )
+      ).toString();
+
+      document.getElementById("alert_total_count_st40").innerHTML = (
+        parseInt(
+          document
+            .getElementById("st40_struct")
+            .innerHTML.toString()
+            .split(" ")[2]
+        ) +
+        parseInt(
+          document
+            .getElementById("st40_elec")
+            .innerHTML.toString()
+            .split(" ")[2]
+        ) +
+        parseInt(
+          document
+            .getElementById("st40_mec")
+            .innerHTML.toString()
+            .split(" ")[2]
+        )
+      ).toString();
+    };
+  }
+
+  display(zone, toolbox) {
+
+    var Url =
+      "http://192.168.221.130:8081/get_dizmo_data?location=Operating&type=ME";
+
+    (function($) {
+      $.ajax({
+        url: Url,
+        type: "GET",
+        success: function(result) {
+          var json2 = JSON.parse(result);
+          var table =
+            "<div class = 'information_container'><div class = 'info_card_list_container'><div class='info_card_long cabecera-listado cabecera'> <table class='info_car_long_content row_plantilla'><tbody><tr><td class='info_card_toolcase'><b>Toolcase</b></td><td class='info_card_table worker'>ID Worker</td><td class='info_card_table problem'>Problem</td><td class='info_card_table status'>Status</td><td class='info_card_table battery'>Battery</td></tr></tbody><tbody></tbody></table></div>";
+
+          var i;
+
+          for (i = 0; i < json2.length; i++) {
+            if (
+              json2[i].event != "OPEN" &&
+              (json2[i].event == "LOW_BATTERY" ||
+                json2[i].case_status == "close")
+            ) {
+              table +=
+                "<div class = 'info_card_long cabecera-listado'><button><table";
+              if (json2[i].notification_type == "alert")
+                table += " style='color : red'";
+              else if (json2[i].notification_type == "warning")
+                table += " style='color : orange'";
+              table +=
+                "><tbody><tr><td class='info_card_toolcase' width='100px'>";
+              table +=
+                json2[i].case_serial_number +
+                "</td><td width='100px'>" +
+                json2[i].worker_id +
+                "</td><td width='100px'>";
+              if (json2[i].event != "LOW_BATTERY") table += json2[i].tool_check;
+              else table += "Low Battery";
+
+              table +=
+                "</td><td width='100px'>" +
+                json2[i].case_status +
+                "</td><td width='100px'>" +
+                json2[i].battery_level +
+                "</td></tr></tbody></table></button></div>";
+            }
+          }
+          table += "</div></div>";
+          document.getElementById("Tabla").innerHTML = table;
+        },
+        error: function(error) {
+          //document.getElementById('ME').innerHTML = error;
+          //Hay que ver qué hacemos cuando haya un error
+        }
+      });
+    })(jQuery);
   }
 }
