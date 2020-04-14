@@ -361,7 +361,7 @@ export class AppComponent {
   display(zone, toolbox) {
 
     var Url =
-      "http://192.168.221.130:8081/get_dizmo_data?location=Operating&type=ME";
+      "http://192.168.221.130:8081/toolboxes_details?location=" + zone + "&type=" + toolbox
 
     (function($) {
       $.ajax({
