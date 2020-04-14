@@ -195,7 +195,7 @@ export class AppComponent {
       '"battery_level":90' +
       "}" +
       "]";
-/*
+
     var json2 = JSON.parse(text2);
     var table =
       "<div class = 'information_container'><div class = 'info_card_list_container'><div class='info_card_long cabecera-listado cabecera'> <table class='info_car_long_content row_plantilla'><tbody><tr><td class='info_card_toolcase'><b>Toolcase</b></td><td class='info_card_table worker'>ID Worker</td><td class='info_card_table problem'>Problem</td><td class='info_card_table status'>Status</td><td class='info_card_table battery'>Battery</td></tr></tbody><tbody></tbody></table></div>";
@@ -208,7 +208,7 @@ export class AppComponent {
         (json2[i].event == "LOW_BATTERY" || json2[i].case_status == "close")
       ) {
         table +=
-          "<div class = 'info_card_long cabecera-listado'><button><table";
+          "<div class = 'info_card_long cabecera-listado'><button (click)='display2('')'><table";
         if (json2[i].notification_type == "alert")
           table += " style='color : red'";
         else if (json2[i].notification_type == "warning")
@@ -232,7 +232,7 @@ export class AppComponent {
     }
     table += "</div></div>";
     document.getElementById("Tabla").innerHTML = table;
-*/
+
     var Url =
       "http://192.168.221.130:8081/get_dizmo_data?location=Operating&type=ME";
 

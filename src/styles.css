@@ -142,16 +142,14 @@ display:block;
 .information_container {
     overflow:auto;
     height: 185px;
-    width: 432px;
+    width: 420px;
     padding-left: 10px;
     padding-right: 50px;
     padding-bottom: 20px;
     display: block;
 }
 
-.information_container::-webkit-scrollbar {
-  display: none;
-}
+
 
 
 
