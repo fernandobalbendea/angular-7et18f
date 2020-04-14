@@ -127,14 +127,29 @@ this.parser(text)
 '}'+
 ']'
 
-var table = "<table style='width:100%' border = 1px><tr><th>Toolcase</th><th>ID Worker</th><th>Problem</th><th>Status</th><th>Battery</th></tr>"
+var table = "<div class = 'information_container'><div class = 'info_card_list_container'><div class='info_card_long cabecera-listado cabecera'> <table class='info_car_long_content row_plantilla'><tbody><tr><td class='info_card_toolcase'>Toolcase</td><td class='info_card_table worker'>ID Worker</td><td class='info_card_island problem'>Problem</td><td class='info_card_island status'>Status</td><td class='info_card_table battery'>Battery</td></tr></tbody><tbody></tbody></table></div>"
+
 var json2 = JSON.parse(text2)
 var i
 
 for (i = 0; i<json2.length; i++){
-  table += "<tr><td>" + json2[i].case_serial_number + "</td><td>" + json2[i].worker_id + "</td><td>" + json2[i].event + "</td><td>" + json2[i].case_status + "</td><td>" + json2[i].battery_level + "</td></tr>"
+  if(json2[i].event != "OPEN" && (json2[i].event == "LOW_BATTERY" || json2[i].case_status == "close")){
+     table += "<div class = 'info_card_long'><table width = '100%' height = '100%' "
+    if(json2[i].notification_type == "alert")
+      table += " style='color : red'"
+    else if (json2[i].notification_type == "warning")
+      table += " style='color : orange'"
+    table += "><tbody><tr><td class='info_card_toolcase' width='100px'>"
+    table += json2[i].case_serial_number + "</td><td width='100px'>" + json2[i].worker_id + "</td><td width='100px'>"
+    if(json2[i].event != "LOW_BATTERY")
+      table += json2[i].tool_check
+    else table += json2[i].event
+    
+    
+    table += "</td><td width='100px'>" + json2[i].case_status + "</td><td width='100px'>" + json2[i].battery_level + "</td></tr></tbody></table></div>"
+  }
 }
-table += "</table>"
+table += "</div></div>"
 document.getElementById("Tabla").innerHTML = table
   
 
@@ -179,7 +194,7 @@ var Url = "http://192.168.221.130:8081/get_dizmo_data?location=Operating&type=ME
         document.getElementById(c + "_mec").innerHTML = "Mechanical = " + json[a].mechanical_cases.number
         if(json[a].mechanical_cases.alerted == 'yes')
           document.getElementById(c + "_mec").style.color = 'red'
-        else
+        else if(json[a].mechanical_cases.alerted == 'no')
           document.getElementById(c + "_mec").style.color = 'white'
       }
       if(json[a].hasOwnProperty("structural_cases")){
@@ -235,7 +250,7 @@ var Url = "http://192.168.221.130:8081/get_dizmo_data?location=Operating&type=ME
 
 
 
-  display(a, b){
+  display(zone, toolbox){
     var Url = "http://192.168.221.130:8081/get_dizmo_data?location=Operating&type=ME";
       
       (function ($) {
