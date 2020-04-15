@@ -211,7 +211,7 @@ export class AppComponent {
         (json2[i].event == "LOW_BATTERY" || json2[i].case_status == "close")
       ) {
         table +=
-          "<div class = 'info_card_long cabecera-listado'><button (click)='display2('')'><table";
+          "<div class = 'info_card_long cabecera-listado'><button (click)='display2('" + json2[i].case_RFID_tag + "', '" + location + "')'><table";
         if (json2[i].notification_type == "alert")
           table += " style='color : red'";
         else if (json2[i].notification_type == "warning")
@@ -271,16 +271,21 @@ export class AppComponent {
       "]" +
       "}";
     document.getElementById("Tabla2").innerHTML = "hola";
-
+    var zone = "Cage01"
     var json3 = JSON.parse(text3);
     document.getElementById("Tabla2").innerHTML = "hola";
 
     table =
-      "<div class = 'information_container'><table border=1px><tr><th>" +
+      "<div class = 'information_container'><table border=1px><tr><td>" +
       json3.case_serial_number +
-      "</th><th>"
-    
-    table += "</th></tr><tr><td><b>Picture</b></td><td><b>Tool Status</b></td><td><b>Details</b></td><td><b>Message</b></td></tr>";
+      "</td><td><img src = '"
+    if(zone === "Cage01"){
+      table += "https://cdn.jsdelivr.net/gh/fernandobalbendea/angular-7et18f@master/src/app/assets/img/Cage.png"
+    }else{
+      table += "https://stackblitz.com/files/angular-7et18f/github/fernandobalbendea/angular-7et18f/master/src/app/assets/img/plane.png"
+    }
+    table += "' alt= 'zone'></td>"
+    table += "</tr><tr><td><b>Picture</b></td><td><b>Tool Status</b></td><td><b>Details</b></td><td><b>Message</b></td></tr>";
 
 
     for (i = 0; i < json3.Tools.length; i++) {
@@ -450,7 +455,7 @@ export class AppComponent {
                 table +=
                   "<div class = 'info_card_long cabecera-listado'><button (click) = 'display2('" +
                   json2[i].case_RFID_tag +
-                  "')`'><table";
+                  "', '" + zone + "')'><table";
                 if (json2[i].notification_type == "alert")
                   table += " style='color : red'";
                 else if (json2[i].notification_type == "warning")
