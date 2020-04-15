@@ -275,11 +275,11 @@ export class AppComponent {
     table =
       "<div class = 'information_container'><table border=1px><tr><th>" +
       json3.case_serial_number +
-      "</th></tr><tr><td><b>Picture></b></td><td><b>Tool Status</b></td><td><b>Details</b></td><td><b>Message</b></td></tr>";
+      "</th></tr><tr><td><b>Picture</b></td><td><b>Tool Status</b></td><td><b>Details</b></td><td><b>Message</b></td></tr>";
 
     for (i = 0; i < json3.Tools.length; i++) {
       table +=
-        "<tr><td><img src = 'app/Style/img/pic_TC042_1.PNG' alt = 'imagen'></td><td>" +
+        "<tr><td><img src = '' alt = 'imagen'></td><td>" +
         json3.Tools[i].Status +
         "</td><td>" +
         json3.Tools[i].Details +
