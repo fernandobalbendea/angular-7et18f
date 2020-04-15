@@ -211,7 +211,7 @@ export class AppComponent {
         (json2[i].event == "LOW_BATTERY" || json2[i].case_status == "close")
       ) {
         table +=
-          "<div class = 'info_card_long cabecera-listado'><button (click)='display2('" + json2[i].case_RFID_tag + "', '" + location + "')'><table";
+          "<div class = 'info_card_long cabecera-listado'><button (click)='display2('" + json2[i].case_RFID_tag + "', '" + location + "', '" + json2[i].case_status + "', '" + json2[i].battery_level + "')'><table";
         if (json2[i].notification_type == "alert")
           table += " style='color : red'";
         else if (json2[i].notification_type == "warning")
@@ -272,6 +272,8 @@ export class AppComponent {
       "}";
     document.getElementById("Tabla2").innerHTML = "hola";
     var zone = "Cage01"
+    var case_status= "open"
+    var battery_level = "81"
     var json3 = JSON.parse(text3);
     document.getElementById("Tabla2").innerHTML = "hola";
 
@@ -284,7 +286,23 @@ export class AppComponent {
     }else{
       table += "https://stackblitz.com/files/angular-7et18f/github/fernandobalbendea/angular-7et18f/master/src/app/assets/img/plane.png"
     }
-    table += "' alt= 'zone'></td>"
+    table += "' alt= 'zone'></td><td><img src = '"
+
+  if(case_status === "open"){
+    table += "https://cdn.jsdelivr.net/gh/fernandobalbendea/angular-7et18f@master/src/app/assets/img/open_lock.png"
+  }else{
+    table += "https://cdn.jsdelivr.net/gh/fernandobalbendea/angular-7et18f@master/src/app/assets/img/closed_lock.png"
+  }
+  table += "' alt = 'lock'></td><td>" + battery_level + "%<img src = '"
+
+  if(parseInt(battery_level) <= 20){
+    table += "https://cdn.jsdelivr.net/gh/fernandobalbendea/angular-7et18f@master/src/app/assets/img/low_battery.png"
+  }else{
+    table += "https://cdn.jsdelivr.net/gh/fernandobalbendea/angular-7et18f@master/src/app/assets/img/fine_battery.png"
+  }
+  
+  table += "' alt = 'bat'></td>"
+
     table += "</tr><tr><td><b>Picture</b></td><td><b>Tool Status</b></td><td><b>Details</b></td><td><b>Message</b></td></tr>";
 
 
@@ -490,7 +508,7 @@ export class AppComponent {
       })(jQuery);
   }
 
-  display2(RFID_Tag) {
+  display2(RFID_Tag, zone, case_status, battery_level) {
     var Url =
       "http://192.168.221.130:8081/toolboxes_details?type=" +
       RFID_Tag(function($) {
