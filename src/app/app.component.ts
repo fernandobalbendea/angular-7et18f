@@ -279,9 +279,7 @@ export class AppComponent {
 
     for (i = 0; i < json3.Tools.length; i++) {
       table +=
-        "<tr><td><img src = '" +
-        json3.Tools[i].Picture +
-        "' alt = 'imagen'></td><td>" +
+        "<tr><td><img src = 'app/Style/img/pic_TC042_1.PNG' alt = 'imagen'></td><td>" +
         json3.Tools[i].Status +
         "</td><td>" +
         json3.Tools[i].Details +
