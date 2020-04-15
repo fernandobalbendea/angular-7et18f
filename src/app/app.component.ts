@@ -5,9 +5,12 @@ declare var jQuery: any;
 @Component({
   selector: "my-app",
   templateUrl: "./app.component.html",
-  styleUrls: ["./Style/app.component.css"]
+  styleUrls: ["./Style/app.component.css"],
 })
 export class AppComponent {
+
+  
+
   parser(text1) {
     var json = JSON.parse(text1);
 
@@ -275,11 +278,14 @@ export class AppComponent {
     table =
       "<div class = 'information_container'><table border=1px><tr><th>" +
       json3.case_serial_number +
-      "</th></tr><tr><td><b>Picture</b></td><td><b>Tool Status</b></td><td><b>Details</b></td><td><b>Message</b></td></tr>";
+      "</th><th>"
+    
+    table += "</th></tr><tr><td><b>Picture</b></td><td><b>Tool Status</b></td><td><b>Details</b></td><td><b>Message</b></td></tr>";
+
 
     for (i = 0; i < json3.Tools.length; i++) {
       table +=
-        "<tr><td><img src = '' alt = 'imagen'></td><td>" +
+        "<tr><td><img src = 'https://cdn.jsdelivr.net/gh/fernandobalbendea/angular-7et18f@master/src/app/assets/img/" + json3.Tools[i].Picture + ".PNG' alt = 'imagen'></td><td>" +
         json3.Tools[i].Status +
         "</td><td>" +
         json3.Tools[i].Details +
