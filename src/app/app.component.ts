@@ -271,14 +271,14 @@ export class AppComponent {
       "]" +
       "}";
     document.getElementById("Tabla2").innerHTML = "hola";
-    var zone = "Cage01"
+    var zone = "st40"
     var case_status= "open"
     var battery_level = "81"
     var json3 = JSON.parse(text3);
     document.getElementById("Tabla2").innerHTML = "hola";
 
     table =
-      "<div class = 'info_card_list_container info_card_long cabecera-listado'><table border=1px><tr><td>" +
+      "<div class = 'info_card_list_container '><table border=1px><tr><td>" +
       json3.case_serial_number +
       "</td><td><img src = '"
     if(zone === "Cage01"){
@@ -473,7 +473,7 @@ export class AppComponent {
                 table +=
                   "<div class = 'info_card_long cabecera-listado'><button (click) = 'display2('" +
                   json2[i].case_RFID_tag +
-                  "', '" + zone + "')'><table";
+                  "', '" + zone + "', '" + json2[i].case_status + "', '" + json2[i].battery_level + "')'><table";
                 if (json2[i].notification_type == "alert")
                   table += " style='color : red'";
                 else if (json2[i].notification_type == "warning")
