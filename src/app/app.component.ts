@@ -278,11 +278,11 @@ export class AppComponent {
     document.getElementById("Tabla2").innerHTML = "hola";
 
     table =
-      "<div class = 'information_container'><table border=1px><tr><td>" +
+      "<div class = 'info_card_list_container info_card_long cabecera-listado'><table border=1px><tr><td>" +
       json3.case_serial_number +
       "</td><td><img src = '"
     if(zone === "Cage01"){
-      table += "https://cdn.jsdelivr.net/gh/fernandobalbendea/angular-7et18f@master/src/app/assets/img/Cage.png"
+      table += "https://cdn.jsdelivr.net/gh/fernandobalbendea/angular-7et18f@master/src/app/assets/img/Cage2.png"
     }else{
       table += "https://stackblitz.com/files/angular-7et18f/github/fernandobalbendea/angular-7et18f/master/src/app/assets/img/plane.png"
     }
