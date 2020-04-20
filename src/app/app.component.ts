@@ -345,7 +345,7 @@ export class AppComponent {
       '{' +
       '"case_serial_number":"me125",' +
       '"case_RFID_tag":"TC125",' +
-      '"timestamp":"XXXX",' +
+      '"timestamp":"2020-04-20 13:23:51.236",' +
       '"worker_id":"81234",' +
       '"zone":"ST40",' +
       '"notification_type":"warning", ' +
@@ -355,8 +355,8 @@ export class AppComponent {
     var json4 = JSON.parse(text4)
     
 
-    table = 
-  document.getElementById("Alerts").innerHTML += "<table><tr><td>table</td></tr></table>"
+    table = "<div class='info_card_long2 cabecera-listado cabecera'><table><tr><td class='info_card_table al'>" + json4.case_serial_number + "</td><td class='info_card_table al'>" + json4.timestamp.split(" ")[0] + "</td><td class='info_card_table al'>" + json4.timestamp.split(" ")[1] + "</td><td class='info_card_table al'>" + json4.worker_id + "</td><td class='info_card_table al'>" + json4.zone + "</td><td class='info_card_table al'>" + json4.event + "</td></tr></table></div>"
+  document.getElementById("Alerts").innerHTML += table
 
 
     var Url =

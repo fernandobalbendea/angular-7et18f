@@ -277,3 +277,10 @@ display:block;
     width: 200px;
 }
 
+.info_card_long2.cabecera-listado .info_card_table.al {
+    width: 200px;
+}
+.info_card_long2.cabecera-listado .info_card_table.alert_title {
+    width: 88px;
+}
+
