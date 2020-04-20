@@ -285,7 +285,8 @@ export class AppComponent {
     var json3 = JSON.parse(text3);
     document.getElementById("Tabla2").innerHTML = "hola";
 
-    table =
+    var table = "<div class='info_card_long2 cabecera-listado title2' style = 'text-align: center'><b>" + zone + " - " + toolbox + " cases details</b></div>"
+    table +=
       "<div class = 'info_card_list_container'><div class='info_card_long2 titulos cabecera-listado cabecera'> <table class='info_car_long_content row_plantilla'><tr><td class='info_card_table serialnum' style = 'vertical-align : top;padding-top : 10px;'>" +
       json3.case_serial_number +
       "</td><td class='info_card_table zone'  style = 'vertical-align : top'><img src = '";
