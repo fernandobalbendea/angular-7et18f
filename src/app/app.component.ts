@@ -308,18 +308,18 @@ export class AppComponent {
 
     for (i = 0; i < json3.Tools.length; i++) {
       table +=
-        "<tr><td><img src = 'https://cdn.jsdelivr.net/gh/fernandobalbendea/angular-7et18f@master/src/app/assets/img/" + json3.Tools[i].Picture + ".PNG' alt = 'imagen'></td><td>" +
+        "<div class='info_card_long2 tools cabecera-listado cabecera'><table><tr><td class='info_card_table img'><img src = '" + json3.Tools[i].Picture + ".PNG' alt = 'imagen'></td><td class='info_card_table zone'>" +
         json3.Tools[i].Status +
-        "</td><td>" +
+        "</td><td class='info_card_table zone'>" +
         json3.Tools[i].Details +
         " " +
         json3.Tools[i].Serial_Number +
-        "</td><td>" +
+        "</td><td class='info_card_table zone'>" +
         json3.Tools[i].Message +
-        "</td></tr>";
+        "</td></tr></table></div>";
     }
 
-    table += "</table></div>";
+    table += "</div>";
 
     document.getElementById("Tabla2").innerHTML = table;
 

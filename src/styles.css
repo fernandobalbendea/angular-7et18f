@@ -201,10 +201,22 @@ display:block;
 
 .info_card_long2.titulos{
   height: 35px;
-  
+}
+
+.info_card_long2.tools{
+  height: 35px;
 }
 
 .info_card_long.cabecera-listado {
+    height: 36px;
+    vertical-align: middle;
+    display: flex;
+    align-items: center;
+    font-size: 15px;
+    margin-bottom: 5px;
+}
+
+.info_card_long2.cabecera-listado {
     height: 36px;
     vertical-align: middle;
     display: flex;
