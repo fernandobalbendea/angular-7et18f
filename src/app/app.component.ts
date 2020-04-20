@@ -197,7 +197,10 @@ export class AppComponent {
       "]";
 
     var json2 = JSON.parse(text2);
-    var table =
+    var zone = "ST40";
+    var toolbox = "Structural"
+    var table = "<div class='info_card_long2 cabecera-listado title3' style = 'text-align: center'><b>" + zone + " - " + toolbox + " cases details</b></div>"
+    table +=
       "<div class = 'information_container'><div class = 'info_card_list_container'><div class='info_card_long cabecera-listado cabecera'> <table class='info_car_long_content row_plantilla'><tbody><tr><td class='info_card_toolcase'><b>Toolcase</b></td><td class='info_card_table worker'>ID Worker</td><td class='info_card_table problem'>Problem</td><td class='info_card_table status'>Status</td><td class='info_card_table battery'>Battery</td></tr></tbody><tbody></tbody></table></div>";
 
     var i;
@@ -276,7 +279,7 @@ export class AppComponent {
       "]" +
       "}";
     document.getElementById("Tabla2").innerHTML = "hola";
-    var zone = "st40";
+    var zone = "Cage01";
     var case_status = "open";
     var battery_level = "81";
     var json3 = JSON.parse(text3);
@@ -342,7 +345,7 @@ export class AppComponent {
     document.getElementById("Tabla2").innerHTML = table;
 
     var text4 =
-      '{' +
+      "{" +
       '"case_serial_number":"me125",' +
       '"case_RFID_tag":"TC125",' +
       '"timestamp":"2020-04-20 13:23:51.236",' +
@@ -350,14 +353,25 @@ export class AppComponent {
       '"zone":"ST40",' +
       '"notification_type":"warning", ' +
       '"event":"Open"' +
-      '}';
+      "}";
 
-    var json4 = JSON.parse(text4)
-    
+    var json4 = JSON.parse(text4);
 
-    table = "<div class='info_card_long2 cabecera-listado cabecera'><table><tr><td class='info_card_table al'>" + json4.case_serial_number + "</td><td class='info_card_table al'>" + json4.timestamp.split(" ")[0] + "</td><td class='info_card_table al'>" + json4.timestamp.split(" ")[1] + "</td><td class='info_card_table al'>" + json4.worker_id + "</td><td class='info_card_table al'>" + json4.zone + "</td><td class='info_card_table al'>" + json4.event + "</td></tr></table></div>"
-  document.getElementById("Alerts").innerHTML += table
-
+    table =
+      "<div class='info_card_long2 cabecera-listado cabecera'><table><tr><td class='info_card_table al'>" +
+      json4.case_serial_number +
+      "</td><td class='info_card_table al'>" +
+      json4.timestamp.split(" ")[0] +
+      "</td><td class='info_card_table al'>" +
+      json4.timestamp.split(" ")[1] +
+      "</td><td class='info_card_table al'>" +
+      json4.worker_id +
+      "</td><td class='info_card_table al'>" +
+      json4.zone +
+      "</td><td class='info_card_table al'>" +
+      json4.event +
+      "</td></tr></table></div>";
+    document.getElementById("Alerts").innerHTML += table;
 
     var Url =
       "http://192.168.221.130:8081/get_dizmo_data?location=Operating&type=ME";

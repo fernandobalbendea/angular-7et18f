@@ -222,7 +222,6 @@ display:block;
 
 .info_card_long.cabecera-listado {
     height: 36px;
-    vertical-align: middle;
     display: flex;
     align-items: center;
     font-size: 15px;
@@ -237,6 +236,50 @@ display:block;
     font-size: 15px;
     margin-bottom: 5px;
 }
+
+.info_card_long2.cabecera-listado.title {
+    height: 10px;
+    width: 290px;
+    display: flex;
+    font-size: 20px;
+    color:#ffffff;
+    padding-top: 20px;
+    padding-right: 40px;
+    padding-left: 140px;
+    margin-right: 10px;
+    margin-left: 10px;
+    margin-bottom: 20px;
+    background-color: #f96279;
+}
+
+.info_card_long2.cabecera-listado.title2 {
+    height: 30px;
+    width: 305px;
+    font-size: 20px;
+    color:#ffffff;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 205px;
+    margin-left: 15px;
+    margin-bottom: 20px;
+    background-color: #f96279;
+}
+
+.info_card_long2.cabecera-listado.title3 {
+    height: 60px;
+    width: 330px;
+    display: flex;
+    font-size: 20px;
+    color:#ffffff;
+    padding-right: 40px;
+    padding-left: 100px;
+    margin-right: 10px;
+    margin-left: 10px;
+    margin-bottom: 20px;
+    background-color: #f96279;
+}
+
+
 
 .info_card_long.cabecera .info_card_toolcase {
     width: 200px !important;
@@ -282,5 +325,9 @@ display:block;
 }
 .info_card_long2.cabecera-listado .info_card_table.alert_title {
     width: 88px;
+}
+
+.info_card_long2.cabecera-listado .info_card_table.alert_title_date {
+    width: 150px;
 }
 
