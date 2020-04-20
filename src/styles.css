@@ -199,13 +199,16 @@ display:block;
     box-shadow: 0 15px 20px 0 rgba(0, 0, 0, 0.1);
 }
 
-.info_card_long2.titulos{
-  height: 35px;
+
+
+.info_card_long2.titulos.cabecera-listado{
+  height: 120px;
 }
 
 .info_card_long2.tools{
   height: 35px;
 }
+
 
 .info_card_long.cabecera-listado {
     height: 36px;

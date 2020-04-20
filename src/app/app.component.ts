@@ -278,22 +278,22 @@ export class AppComponent {
     document.getElementById("Tabla2").innerHTML = "hola";
 
     table =
-      "<div class = 'info_card_list_container'><div class='info_card_long2 cabecera-listado cabecera'> <table class='info_car_long_content row_plantilla'><tr><td class='info_card_table serialnum'>" +
+      "<div class = 'info_card_list_container'><div class='info_card_long2 titulos cabecera-listado cabecera'> <table class='info_car_long_content row_plantilla'><tr><td class='info_card_table serialnum' style = 'vertical-align : top;padding-top : 10px;'>" +
       json3.case_serial_number +
-      "</td><td class='info_card_table zone'><img src = '"
+      "</td><td class='info_card_table zone'  style = 'vertical-align : top'><img src = '"
     if(zone === "Cage01"){
       table += "https://cdn.jsdelivr.net/gh/fernandobalbendea/angular-7et18f@master/src/app/assets/img/Cage2.png"
     }else{
       table += "https://stackblitz.com/files/angular-7et18f/github/fernandobalbendea/angular-7et18f/master/src/app/assets/img/plane.png"
     }
-    table += "' alt= 'zone'></td><td class='info_card_table lock'><img src = '"
+    table += "' alt= 'zone'></td><td class='info_card_table lock' style = 'vertical-align : top'><img src = '"
 
   if(case_status === "open"){
     table += "https://cdn.jsdelivr.net/gh/fernandobalbendea/angular-7et18f@master/src/app/assets/img/open_lock.png"
   }else{
     table += "https://cdn.jsdelivr.net/gh/fernandobalbendea/angular-7et18f@master/src/app/assets/img/closed_lock.png"
   }
-  table += "' alt = 'lock'></td><td>" + battery_level + "%</td><td><img src = '"
+  table += "' alt = 'lock'></td><td style = 'vertical-align : top; padding-top : 10px;'>" + battery_level + "%</td><td style = 'vertical-align : top;padding-top : 10px;'><img src = '"
 
   if(parseInt(battery_level) <= 20){
     table += "https://cdn.jsdelivr.net/gh/fernandobalbendea/angular-7et18f@master/src/app/assets/img/low_battery.png"
@@ -301,9 +301,9 @@ export class AppComponent {
     table += "https://cdn.jsdelivr.net/gh/fernandobalbendea/angular-7et18f@master/src/app/assets/img/fine_battery.png"
   }
   
-  table += "' alt = 'bat'></td>"
+  table += "' alt = 'bat'></td><td><img src = 'https://cdn.jsdelivr.net/gh/fernandobalbendea/angular-7et18f@master/src/app/assets/img/operator.PNG' alt = 'operator'></td>"
 
-    table += "</tr></table></div><div class='info_card_long2 titulos cabecera-listado cabecera'><table><tr><td class='info_card_table zone'><b>Picture</b></td ><td class='info_card_table zone'><b>Tool Status</b></td><td class='info_card_table zone'><b>Details</b></td><td class='info_card_table zone'><b>Message</b></td></tr></table></div>";
+    table += "</tr></table></div><div class='info_card_long2 cabecera-listado cabecera'><table><tr><td class='info_card_table zone'><b>Picture</b></td ><td class='info_card_table zone'><b>Tool Status</b></td><td class='info_card_table zone'><b>Details</b></td><td class='info_card_table zone'><b>Message</b></td></tr></table></div>";
 
 
     for (i = 0; i < json3.Tools.length; i++) {
