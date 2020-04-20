@@ -149,6 +149,16 @@ display:block;
     display: block;
 }
 
+.information_container2 {
+    
+    height: 185px;
+    width: 420px;
+    padding-left: 10px;
+    padding-right: 50px;
+    padding-bottom: 20px;
+    
+}
+
 
 
 
