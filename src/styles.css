@@ -143,17 +143,17 @@ display:block;
     overflow:auto;
     height: 185px;
     width: 420px;
-    padding-left: 10px;
+    padding-left: 0px;
     padding-right: 50px;
     padding-bottom: 20px;
     display: block;
 }
 
 .information_container2 {
-    
+    overflow:auto;
     height: 185px;
-    width: 420px;
-    padding-left: 10px;
+    width: 500px;
+    padding-left: 0px;
     padding-right: 50px;
     padding-bottom: 20px;
     
@@ -259,8 +259,9 @@ display:block;
     color:#ffffff;
     padding-top: 10px;
     padding-bottom: 10px;
-    padding-left: 205px;
-    margin-left: 15px;
+    padding-left: 150px;
+    padding-right:90px;
+    margin-left: 0px;
     margin-bottom: 20px;
     background-color: #f96279;
 }

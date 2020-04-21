@@ -195,55 +195,62 @@ export class AppComponent {
       '"battery_level":90' +
       "}" +
       "]";
+    text2 = "[]"
 
-    var json2 = JSON.parse(text2);
-    var zone = "ST40";
-    var toolbox = "Structural"
-    var table = "<div class='info_card_long2 cabecera-listado title3' style = 'text-align: center'><b>" + zone + " - " + toolbox + " cases details</b></div>"
-    table +=
-      "<div class = 'information_container'><div class = 'info_card_list_container'><div class='info_card_long cabecera-listado cabecera'> <table class='info_car_long_content row_plantilla'><tbody><tr><td class='info_card_toolcase'><b>Toolcase</b></td><td class='info_card_table worker'>ID Worker</td><td class='info_card_table problem'>Problem</td><td class='info_card_table status'>Status</td><td class='info_card_table battery'>Battery</td></tr></tbody><tbody></tbody></table></div>";
+    if(text2 === "[]"){
 
-    var i;
+      var table = "<div class='info_card_long2 cabecera-listado title3' style = 'text-align: center; margin-left:0px;'><b>NO TRANSACTIONS FOUND</b></div>"
 
-    for (i = 0; i < json2.length; i++) {
-      if (
-        json2[i].event != "OPEN" &&
-        (json2[i].event == "LOW_BATTERY" || json2[i].case_status == "close")
-      ) {
-        table +=
-          "<div class = 'info_card_long cabecera-listado'><button (click)='display2('" +
-          json2[i].case_RFID_tag +
-          "', '" +
-          location +
-          "', '" +
-          json2[i].case_status +
-          "', '" +
-          json2[i].battery_level +
-          "')'><table";
-        if (json2[i].notification_type == "alert")
-          table += " style='color : red'";
-        else if (json2[i].notification_type == "warning")
+      
+    }else{
+      var json2 = JSON.parse(text2);
+      var zone = "ST40";
+      var toolbox = "Structural"
+      var table = "<div class='info_card_long2 cabecera-listado title3' style = 'text-align: center; margin-left:0px;'><b>" + zone + " - " + toolbox + " cases details</b></div>"
+      table +=
+        "<div class = 'info_card_list_container'><div class='info_card_long cabecera-listado cabecera'> <table class='info_car_long_content row_plantilla' ><tbody><tr><td class='info_card_toolcase'><b>Toolcase</b></td><td class='info_card_table worker'>ID Worker</td><td class='info_card_table problem'>Problem</td><td class='info_card_table status'>Status</td><td class='info_card_table battery'>Battery</td></tr></tbody><tbody></tbody></table></div><div class = 'information_container'>";
+
+      var i;
+
+      for (i = 0; i < json2.length; i++) {
+        if (
+          json2[i].event != "OPEN" &&
+          (json2[i].event == "LOW_BATTERY" || json2[i].case_status == "close")
+        ) {
+          table +=
+            "<div class = 'info_card_long cabecera-listado'><button (click)='display2('" +
+            json2[i].case_RFID_tag +
+            "', '" +
+            location +
+            "', '" +
+            json2[i].case_status +
+            "', '" +
+            json2[i].battery_level +
+            "')'><table";
+          if (json2[i].notification_type == "alert")
+            table += " style='color : red'";
+          else if (json2[i].notification_type == "warning")
           table += " style='color : orange'";
-        table += "><tbody><tr><td class='info_card_toolcase' width='100px'>";
-        table +=
-          json2[i].case_serial_number +
-          "</td><td width='100px'>" +
-          json2[i].worker_id +
-          "</td><td width='100px'>";
-        if (json2[i].event != "LOW_BATTERY") table += json2[i].tool_check;
-        else table += "Low Battery";
+          table += "><tbody><tr><td class='info_card_toolcase' width='100px'>";
+          table +=
+            json2[i].case_serial_number +
+            "</td><td width='100px'>" +
+            json2[i].worker_id +
+            "</td><td width='100px'>";
+          if (json2[i].event != "LOW_BATTERY") table += json2[i].tool_check;
+          else table += "Low Battery";
 
-        table +=
-          "</td><td width='100px'>" +
-          json2[i].case_status +
-          "</td><td width='100px'>" +
-          json2[i].battery_level +
-          "</td></tr></tbody></table></button></div>";
+          table +=
+            "</td><td width='100px'>" +
+            json2[i].case_status +
+            "</td><td width='100px'>" +
+            json2[i].battery_level +
+            "</td></tr></tbody></table></button></div>";
+        }
       }
+      table += "</div></div>";
     }
-    table += "</div></div>";
     document.getElementById("Tabla").innerHTML = table;
-
     var text3 =
       "{" +
       '"case_serial_number":"mc042",' +
@@ -252,40 +259,39 @@ export class AppComponent {
       '"worker_id":"81392",' +
       '"name_worker_id":"Juan Ramirez",' +
       '"Tools":[' +
-      "{" +
-      '"Status":"Missing_Tool",' +
-      '"Serial_Number":"12398",' +
-      '"RFID_Tag":"TC042_1",' +
-      '"Details":"Alicate",' +
-      '"Message":"Missing at 10:11",' +
-      '"Picture":"pic_TC042_1"' +
-      "}," +
-      "{" +
-      '"Status":"Missing_Tool",' +
-      '"Serial_Number":"18395",' +
-      '"RFID_Tag":"TC042_2",' +
-      '"Details":"Herramienta de corte",' +
-      '"Message":"Missing at 14:20",' +
-      '"Picture":"pic_TC042_2"' +
-      "}," +
-      "{" +
-      '"Status":"Added_Tool",' +
-      '"Serial_Number":"15729",' +
-      '"RFID_Tag":"TC042_3",' +
-      '"Details":"Destornillador",' +
-      '"Message":"Added at 14:20",' +
-      '"Picture":"pic_TC042_3"' +
-      "}" +
+      
+      //"{" +
+      //'"Status":"Missing_Tool",' +
+      //'"Serial_Number":"12398",' +
+      //'"RFID_Tag":"TC042_1",' +
+      //'"Details":"Alicate",' +
+      //'"Message":"Missing at 10:11",' +
+      //'"Picture":"pic_TC042_1"' +
+      //"}," +
+      //"{" +
+      //'"Status":"Missing_Tool",' +
+      //'"Serial_Number":"18395",' +
+      //'"RFID_Tag":"TC042_2",' +
+      //'"Details":"Herramienta de corte",' +
+      //'"Message":"Missing at 14:20",' +
+      //'"Picture":"pic_TC042_2"' +
+      //"}," +
+      //"{" +
+      //'"Status":"Added_Tool",' +
+      //'"Serial_Number":"15729",' +
+      //'"RFID_Tag":"TC042_3",' +
+      //'"Details":"Destornillador",' +
+      //'"Message":"Added at 14:20",' +
+      //'"Picture":"pic_TC042_3"' +
+      //"}" +
       "]" +
       "}";
-    document.getElementById("Tabla2").innerHTML = "hola";
     var zone = "Cage01";
     var case_status = "open";
     var battery_level = "81";
     var json3 = JSON.parse(text3);
-    document.getElementById("Tabla2").innerHTML = "hola";
 
-    var table = "<div class='info_card_long2 cabecera-listado title2' style = 'text-align: center'><b>" + zone + " - " + toolbox + " cases details</b></div>"
+    var table = "<div class='info_card_long2 cabecera-listado title2' style = 'text-align: center'><img src = 'https://cdn.jsdelivr.net/gh/fernandobalbendea/angular-7et18f@master/src/app/assets/img/white_cage.png' width = '40px'><pre>  </pre><b>" + json3.case_serial_number + " - Details</b></div>"
     table +=
       "<div class = 'info_card_list_container'><div class='info_card_long2 titulos cabecera-listado cabecera'> <table class='info_car_long_content row_plantilla'><tr><td class='info_card_table serialnum' style = 'vertical-align : top;padding-top : 10px;'>" +
       json3.case_serial_number +
@@ -321,28 +327,31 @@ export class AppComponent {
     }
 
     table +=
-      "' alt = 'bat'></td><td><img src = 'https://cdn.jsdelivr.net/gh/fernandobalbendea/angular-7et18f@master/src/app/assets/img/operator.PNG' alt = 'operator'></td>";
+      "' alt = 'bat'></td><td><img src = 'https://cdn.jsdelivr.net/gh/fernandobalbendea/angular-7et18f@master/src/app/assets/img/operator.PNG' alt = 'operator'></td></tr></table></div>";
 
-    table +=
-      "</tr></table></div><div class='info_card_long2 cabecera-listado cabecera'><table><tr><td class='info_card_table'><b>Picture</b></td ><td class='info_card_table zone'><b>Tool Status</b></td><td class='info_card_table '><b>Details</b></td><td class='info_card_table zone'><b>Message</b></td></tr></table></div>";
-
-    for (i = 0; i < json3.Tools.length; i++) {
+    if(json3.Tools.length !== 0){
       table +=
-        "<div class='info_card_long2 tools cabecera-listado cabecera'><table><tr><td class='info_card_table img'><img src = '" +
-        json3.Tools[i].Picture +
-        ".PNG' alt = 'imagen'></td><td class='info_card_table zone'>" +
-        json3.Tools[i].Status +
-        "</td><td class='info_card_table zone'>" +
-        json3.Tools[i].Details +
-        " " +
-        json3.Tools[i].Serial_Number +
-        "</td><td class='info_card_table zone'>" +
-        json3.Tools[i].Message +
-        "</td></tr></table></div>";
+        "<div class='info_card_long2 cabecera-listado cabecera'><table><tr><td class='info_card_table'><b>Picture</b></td ><td class='info_card_table zone'><b>Tool Status</b></td><td class='info_card_table '><b>Details</b></td><td class='info_card_table zone'><b>Message</b></td></tr></table></div>";
+
+      for (i = 0; i < json3.Tools.length; i++) {
+        table +=
+          "<div class='info_card_long2 tools cabecera-listado cabecera'><table><tr><td class='info_card_table img'><img src = '" +
+          json3.Tools[i].Picture +
+          ".PNG' alt = 'imagen'></td><td class='info_card_table zone'>" +
+          json3.Tools[i].Status +
+          "</td><td class='info_card_table zone'>" +
+          json3.Tools[i].Details +
+          " " +
+          json3.Tools[i].Serial_Number +
+          "</td><td class='info_card_table zone'>" +
+          json3.Tools[i].Message +
+          "</td></tr></table></div>";
+      }
+
+      table += "</div>";
+    }else{
+      table += "<div class='info_card_long2 tools cabecera-listado cabecera' style = 'padding-left:200px; width:310px'>NO PROBLEM FOUND</div>"
     }
-
-    table += "</div>";
-
     document.getElementById("Tabla2").innerHTML = table;
 
     var text4 =
@@ -357,8 +366,7 @@ export class AppComponent {
       "}";
 
     var json4 = JSON.parse(text4);
-
-    table =
+    table = 
       "<div class='info_card_long2 cabecera-listado cabecera'><table><tr><td class='info_card_table al'>" +
       json4.case_serial_number +
       "</td><td class='info_card_table al'>" +
@@ -372,7 +380,12 @@ export class AppComponent {
       "</td><td class='info_card_table al'>" +
       json4.event +
       "</td></tr></table></div>";
-    document.getElementById("Alerts").innerHTML += table;
+    
+    document.getElementById("Alerts").innerHTML = table + document.getElementById("Alerts").innerHTML;
+    document.getElementById("Alerts").innerHTML = table + document.getElementById("Alerts").innerHTML;
+    document.getElementById("Alerts").innerHTML = table + document.getElementById("Alerts").innerHTML;
+    document.getElementById("Alerts").innerHTML = table + document.getElementById("Alerts").innerHTML;
+    document.getElementById("Alerts").innerHTML = table + document.getElementById("Alerts").innerHTML;
 
     var Url =
       "http://192.168.221.130:8081/get_dizmo_data?location=Operating&type=ME";
