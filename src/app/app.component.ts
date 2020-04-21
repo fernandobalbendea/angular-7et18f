@@ -195,18 +195,21 @@ export class AppComponent {
       '"battery_level":90' +
       "}" +
       "]";
-    text2 = "[]"
+   
 
-    if(text2 === "[]"){
-
-      var table = "<div class='info_card_long2 cabecera-listado title3' style = 'text-align: center; margin-left:0px;'><b>NO TRANSACTIONS FOUND</b></div>"
-
-      
-    }else{
+    if (text2 === "[]") {
+      var table =
+        "<div class='info_card_long2 cabecera-listado title3' style = 'text-align: center; margin-left:0px;'><b>NO TRANSACTIONS FOUND</b></div>";
+    } else {
       var json2 = JSON.parse(text2);
       var zone = "ST40";
-      var toolbox = "Structural"
-      var table = "<div class='info_card_long2 cabecera-listado title3' style = 'text-align: center; margin-left:0px;'><b>" + zone + " - " + toolbox + " cases details</b></div>"
+      var toolbox = "Structural";
+      var table =
+        "<div class='info_card_long2 cabecera-listado title3' style = 'text-align: center; margin-left:0px;'><b>" +
+        zone +
+        " - " +
+        toolbox +
+        " cases details</b></div>";
       table +=
         "<div class = 'info_card_list_container'><div class='info_card_long cabecera-listado cabecera'> <table class='info_car_long_content row_plantilla' ><tbody><tr><td class='info_card_toolcase'><b>Toolcase</b></td><td class='info_card_table worker'>ID Worker</td><td class='info_card_table problem'>Problem</td><td class='info_card_table status'>Status</td><td class='info_card_table battery'>Battery</td></tr></tbody><tbody></tbody></table></div><div class = 'information_container'>";
 
@@ -230,7 +233,7 @@ export class AppComponent {
           if (json2[i].notification_type == "alert")
             table += " style='color : red'";
           else if (json2[i].notification_type == "warning")
-          table += " style='color : orange'";
+            table += " style='color : orange'";
           table += "><tbody><tr><td class='info_card_toolcase' width='100px'>";
           table +=
             json2[i].case_serial_number +
@@ -259,15 +262,14 @@ export class AppComponent {
       '"worker_id":"81392",' +
       '"name_worker_id":"Juan Ramirez",' +
       '"Tools":[' +
-      
-      //"{" +
-      //'"Status":"Missing_Tool",' +
-      //'"Serial_Number":"12398",' +
-      //'"RFID_Tag":"TC042_1",' +
-      //'"Details":"Alicate",' +
-      //'"Message":"Missing at 10:11",' +
-      //'"Picture":"pic_TC042_1"' +
-      //"}," +
+      "{" +
+      '"Status":"Missing_Tool",' +
+      '"Serial_Number":"12398",' +
+      '"RFID_Tag":"TC042_1",' +
+      '"Details":"Alicate",' +
+      '"Message":"Missing at 10:11",' +
+      '"Picture":"pic_TC042_1"' +
+      "}" +
       //"{" +
       //'"Status":"Missing_Tool",' +
       //'"Serial_Number":"18395",' +
@@ -291,11 +293,12 @@ export class AppComponent {
     var battery_level = "81";
     var json3 = JSON.parse(text3);
 
-    var table = "<div class='info_card_long2 cabecera-listado title2' style = 'text-align: center'><img src = 'https://cdn.jsdelivr.net/gh/fernandobalbendea/angular-7et18f@master/src/app/assets/img/white_cage.png' width = '40px'><pre>  </pre><b>" + json3.case_serial_number + " - Details</b></div>"
-    table +=
-      "<div class = 'info_card_list_container'><div class='info_card_long2 titulos cabecera-listado cabecera'> <table class='info_car_long_content row_plantilla'><tr><td class='info_card_table serialnum' style = 'vertical-align : top;padding-top : 10px;'>" +
+    var table =
+      "<div class='info_card_long2 cabecera-listado title2' style = 'text-align: center'><img src = 'https://cdn.jsdelivr.net/gh/fernandobalbendea/angular-7et18f@master/src/app/assets/img/white_cage.png' width = '40px'><pre>  </pre><b>" +
       json3.case_serial_number +
-      "</td><td class='info_card_table zone'  style = 'vertical-align : top'><img src = '";
+      " - Details</b></div>";
+    table +=
+      "<div class = 'info_card_list_container'><div class='info_card_long2 titulos cabecera-listado cabecera' style = 'width:500px'> <table class='info_car_long_content row_plantilla'><tr><td class='info_card_table zone'  style = 'vertical-align : top'><table><tr><td><img src = '";
     if (zone === "Cage01") {
       table +=
         "https://cdn.jsdelivr.net/gh/fernandobalbendea/angular-7et18f@master/src/app/assets/img/Cage2.png";
@@ -304,7 +307,9 @@ export class AppComponent {
         "https://stackblitz.com/files/angular-7et18f/github/fernandobalbendea/angular-7et18f/master/src/app/assets/img/plane.png";
     }
     table +=
-      "' alt= 'zone'></td><td class='info_card_table lock' style = 'vertical-align : top'><img src = '";
+      "' alt= 'zone'></td></tr><tr><td>" +
+      zone +
+      "</td></tr></table><td class='info_card_table lock' style = 'vertical-align : top'><table><tr><td><img src = '";
 
     if (case_status === "open") {
       table +=
@@ -314,7 +319,9 @@ export class AppComponent {
         "https://cdn.jsdelivr.net/gh/fernandobalbendea/angular-7et18f@master/src/app/assets/img/closed_lock.png";
     }
     table +=
-      "' alt = 'lock'></td><td style = 'vertical-align : top; padding-top : 10px;'>" +
+      "' alt = 'lock'></td></tr><tr><td>" +
+      case_status +
+      "</td></tr></table></td><td style = 'vertical-align : top; padding-top : 10px;'>" +
       battery_level +
       "%</td><td style = 'vertical-align : top;padding-top : 10px;'><img src = '";
 
@@ -327,9 +334,11 @@ export class AppComponent {
     }
 
     table +=
-      "' alt = 'bat'></td><td><img src = 'https://cdn.jsdelivr.net/gh/fernandobalbendea/angular-7et18f@master/src/app/assets/img/operator.PNG' alt = 'operator'></td></tr></table></div>";
+      "' alt = 'bat'></td><td style = 'width:120px'><table><tr><td><img src = 'https://cdn.jsdelivr.net/gh/fernandobalbendea/angular-7et18f@master/src/app/assets/img/operator.PNG' alt = 'operator'></td></tr><tr><td>" +
+      json3.name_worker_id +
+      "</td></tr></table></td></tr></table></div>";
 
-    if(json3.Tools.length !== 0){
+    if (json3.Tools.length !== 0) {
       table +=
         "<div class='info_card_long2 cabecera-listado cabecera'><table><tr><td class='info_card_table'><b>Picture</b></td ><td class='info_card_table zone'><b>Tool Status</b></td><td class='info_card_table '><b>Details</b></td><td class='info_card_table zone'><b>Message</b></td></tr></table></div>";
 
@@ -349,8 +358,9 @@ export class AppComponent {
       }
 
       table += "</div>";
-    }else{
-      table += "<div class='info_card_long2 tools cabecera-listado cabecera' style = 'padding-left:200px; width:310px'>NO PROBLEM FOUND</div>"
+    } else {
+      table +=
+        "<div class='info_card_long2 tools cabecera-listado cabecera' style = 'padding-left:200px; width:450px'>NO PROBLEM FOUND</div>";
     }
     document.getElementById("Tabla2").innerHTML = table;
 
@@ -366,8 +376,8 @@ export class AppComponent {
       "}";
 
     var json4 = JSON.parse(text4);
-    table = 
-      "<div class='info_card_long2 cabecera-listado cabecera'><table><tr><td class='info_card_table al'>" +
+    table =
+      "<div class='info_card_long2 cabecera-listado cabecera'  style = 'width : 620px;'><table><tr><td class='info_card_table al'>" +
       json4.case_serial_number +
       "</td><td class='info_card_table al'>" +
       json4.timestamp.split(" ")[0] +
@@ -380,12 +390,17 @@ export class AppComponent {
       "</td><td class='info_card_table al'>" +
       json4.event +
       "</td></tr></table></div>";
-    
-    document.getElementById("Alerts").innerHTML = table + document.getElementById("Alerts").innerHTML;
-    document.getElementById("Alerts").innerHTML = table + document.getElementById("Alerts").innerHTML;
-    document.getElementById("Alerts").innerHTML = table + document.getElementById("Alerts").innerHTML;
-    document.getElementById("Alerts").innerHTML = table + document.getElementById("Alerts").innerHTML;
-    document.getElementById("Alerts").innerHTML = table + document.getElementById("Alerts").innerHTML;
+
+    document.getElementById("Alerts").innerHTML =
+      table + document.getElementById("Alerts").innerHTML;
+    document.getElementById("Alerts").innerHTML =
+      table + document.getElementById("Alerts").innerHTML;
+    document.getElementById("Alerts").innerHTML =
+      table + document.getElementById("Alerts").innerHTML;
+    document.getElementById("Alerts").innerHTML =
+      table + document.getElementById("Alerts").innerHTML;
+    document.getElementById("Alerts").innerHTML =
+      table + document.getElementById("Alerts").innerHTML;
 
     var Url =
       "http://192.168.221.130:8081/get_dizmo_data?location=Operating&type=ME";
